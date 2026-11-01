@@ -85,9 +85,12 @@ National lignite electricity generation decreased substantially between 2015 and
 - `requirements.txt` – Required Python libraries
 - `.gitignore` – Files excluded from version control
 
+
 ## How to Run
 
 ### 1. Install Dependencies
+
+Install the required Python packages:
 
 ```bash
 python -m pip install -r requirements.txt
@@ -100,9 +103,15 @@ python src/fetch_energy_data.py
 python src/analyze_generation.py
 ```
 
-### 3. Run CO2 Emissions Analysis
+### 3. Run CO₂ Emissions Analysis
 
-Download the "Verified Emissions 2025" Excel dataset from the European Commission's Union Registry and place it in `data/raw/eu_ets/`.
+Download the "Verified Emissions 2025" Excel dataset from the European Commission's Union Registry:
+
+https://climate.ec.europa.eu/areas-action/carbon-markets/eu-emissions-trading-system-eu-ets/union-registry_en
+
+Create the folder `data/raw/eu_ets/` and place the downloaded Excel file inside it.
+
+The original dataset is not included in this repository.
 
 Then run:
 
@@ -110,4 +119,7 @@ Then run:
 python src/analyze_ets.py
 ```
 
-The results are saved in `data/processed/` and `figures/`.
+### 4. Outputs
+
+- Processed datasets are saved in `data/processed/`.
+- Generated charts are saved in `figures/`.
