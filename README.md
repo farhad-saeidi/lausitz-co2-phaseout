@@ -1,21 +1,16 @@
 # CO₂ Emissions & Coal Phase-Out in Lusatia (2015–2025)
 
+**Author:** Farhad Saeidi  
+M.Sc. Environmental and Resource Management  
+BTU Cottbus-Senftenberg, Germany
+
 ## Project Overview
 
-This project investigates changes in public net electricity generation in Germany and verified CO₂ emissions from three lignite power plants in Lusatia between 2015 and 2025.
+This project investigates changes in Germany's public net electricity generation and verified CO₂ emissions from three lignite power plants in Lusatia (Jänschwalde, Boxberg, and Schwarze Pumpe) between 2015 and 2025.
 
-## Key Findings
+**Important:** Electricity generation data cover all of Germany, while CO₂ emissions data cover only the three selected power plants in Lusatia.
 
-- Lignite electricity generation decreased by 51.90%.
-- Wind electricity generation increased by 65.88%.
-- Solar electricity generation increased by 99.16%.
-- Combined verified emissions from the three power plants decreased by 42.76%.
 
-## Limitations
-
-- The 2015 electricity dataset is missing the first hour.
-- Changes in emissions cannot be attributed solely to coal phase-out policies.
-- Plant-level CO₂ intensity was not calculated due to the lack of matching generation data.
 
 ## Data Sources
 
@@ -24,12 +19,12 @@ This project investigates changes in public net electricity generation in German
 - URL: https://api.energy-charts.info/
 - Period: 2015–2025
 - Country: Germany
-- Variables: Lignite, onshore wind, offshore wind, and solar generation
+- Variables: Lignite, wind (onshore + offshore combined), and solar generation
 
 ### CO2 Emissions
 - Source: European Commission — EU Emissions Trading System (EU ETS)
 - URL: https://climate.ec.europa.eu/areas-action/carbon-markets/eu-emissions-trading-system-eu-ets/union-registry_en
-- Dataset: Verified Emissions 2025
+- Dataset: Verified Emissions 2025 (contains annual verified emissions per installation for all years used)
 - Period: 2015–2025
 - Power plants: Boxberg, Jänschwalde, Schwarze Pumpe
 
@@ -56,3 +51,61 @@ This project investigates changes in public net electricity generation in German
 ### 3. Power Plant Emissions Comparison (2015 vs 2025)
 
 ![CO2 Emissions Comparison](figures/plant_emissions_comparison.png)
+
+
+## Key Findings (2015–2025)
+
+| Indicator | 2015 | 2025 | Change |
+|---|---:|---:|---:|
+| Lignite generation (Germany) | 139.69 TWh | 67.18 TWh | -51.90% |
+| Wind generation (Germany) | 79.07 TWh | 131.17 TWh | +65.88% |
+| Solar generation (Germany) | 35.21 TWh | 70.12 TWh | +99.16% |
+| CO₂ emissions (3 Lusatian plants) | 55.01 Mt | 31.49 Mt | -42.76% |
+
+National lignite electricity generation decreased substantially between 2015 and 2025, while wind and solar generation increased. Verified emissions from the three selected Lusatian power plants also declined, although the two datasets represent different geographical scopes.
+
+
+## Limitations
+
+- The 2015 electricity generation dataset is missing the first hour of the year.
+- Changes in CO₂ emissions cannot be attributed solely to coal phase-out policies. Electricity demand, fuel prices, carbon prices, and other factors may also influence emissions.
+- National electricity generation and plant-level emissions represent different geographical and operational scopes and should not be directly equated.
+- Plant-level CO₂ intensity was not calculated because matching electricity generation data were unavailable. Combined heat and power production would also require appropriate emissions allocation.
+
+
+## Repository Structure
+
+- `src/` – Python scripts for data collection and analysis
+- `data/raw/` – Original datasets (excluded from Git)
+- `data/processed/` – Processed datasets and annual summaries
+- `figures/` – Generated charts and visualizations
+- `README.md` – Project documentation
+- `requirements.txt` – Required Python libraries
+- `.gitignore` – Files excluded from version control
+
+## How to Run
+
+### 1. Install Dependencies
+
+```bash
+python -m pip install -r requirements.txt
+```
+
+### 2. Run Electricity Generation Analysis
+
+```bash
+python src/fetch_energy_data.py
+python src/analyze_generation.py
+```
+
+### 3. Run CO2 Emissions Analysis
+
+Download the "Verified Emissions 2025" Excel dataset from the European Commission's Union Registry and place it in `data/raw/eu_ets/`.
+
+Then run:
+
+```bash
+python src/analyze_ets.py
+```
+
+The results are saved in `data/processed/` and `figures/`.

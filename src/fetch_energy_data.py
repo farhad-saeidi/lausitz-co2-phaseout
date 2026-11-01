@@ -1,10 +1,16 @@
 import requests
+from pathlib import Path
 import pandas as pd
 
 url = "https://api.energy-charts.info/v2/public_power"
 
-for year in range(2019, 2025):
+for year in range(2015, 2026):
     print(f"\nProcessing year: {year}")
+
+    if Path(f"data/processed/energy_generation_{year}.csv").exists():
+        print("File already exists. Skipping download.")
+        continue
+
     params = {
         "country": "de",
         "start": f"{year}-01-01",
