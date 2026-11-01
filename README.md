@@ -62,6 +62,8 @@ This project investigates changes in Germany's public net electricity generation
 | Solar generation (Germany) | 35.21 TWh | 70.12 TWh | +99.16% |
 | CO₂ emissions (3 Lusatian plants) | 55.01 Mt | 31.49 Mt | -42.76% |
 
+
+Notably, emissions from the three Lusatian plants (−42.8%) declined less sharply than national lignite generation (−51.9%).
 National lignite electricity generation decreased substantially between 2015 and 2025, while wind and solar generation increased. Verified emissions from the three selected Lusatian power plants also declined, although the two datasets represent different geographical scopes.
 
 
